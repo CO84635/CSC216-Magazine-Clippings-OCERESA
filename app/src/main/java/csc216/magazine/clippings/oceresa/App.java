@@ -3,17 +3,11 @@ import java.util.HashMap;
 
 public class App {
     boolean canCreateNote(String note, String[] articles) {
+
+        HashMap<Character, Integer> noteCharCount = new HashMap<>(68);
         if (note == null) {
             return false;
         }
-
-        for (String article : articles) {
-            if (article == null) {
-                return false;
-            }
-        }
-
-        HashMap<Character, Integer> noteCharCount = new HashMap<>(68);
         note = note.toLowerCase();
         note = note.replaceAll("\\s", "");
         for (char c : note.toCharArray()) {
@@ -22,6 +16,9 @@ public class App {
 
         HashMap<Character, Integer> articlesCharCount = new HashMap<>(68);
         for (String article : articles) {
+            if (article == null) {
+                return false;
+            }
             article = article.toLowerCase();
             article = article.replaceAll("\\s", "");
             for (char c : article.toCharArray()) {
